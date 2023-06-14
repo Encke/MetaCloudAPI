@@ -1,0 +1,30 @@
+{
+  "name": "metacloudapi",
+  "version": "1.0.0",
+  "description": "MetaCloud API - What's App Messaging System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Encke/MetaCloudAPI.git"
+  },
+  "author": "James Encke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Encke/MetaCloudAPI/issues"
+  },
+  "homepage": "https://github.com/Encke/MetaCloudAPI#readme",
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "eslint": "^8.42.0",
+    "fs": "^0.0.1-security",
+    "mime-kind": "^4.0.0",
+    "prettier": "^2.8.8"
+  }
+}
