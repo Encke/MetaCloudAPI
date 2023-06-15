@@ -544,9 +544,13 @@ const meta = {
                     processMessage({
                       profileName,
                       messageId,
-                      text: file.list_reply
-                        ? file.list_reply.id + '\n' + file.list_reply.title
-                        : '',
+                      text: '',
+                      option: file.list_reply
+                        ? {
+                            id: file.list_reply.id,
+                            text: file.list_reply.title,
+                          }
+                        : null,
                       from,
                       timestamp,
                       replyData,
