@@ -88,7 +88,7 @@ const meta = {
           ? result.messages[0].id
           : null
       if (type != 'read')
-        await meta.saveOutbound('meta', {
+        await meta.saveOutbound({
           userId,
           type,
           to: parseInt(to),
