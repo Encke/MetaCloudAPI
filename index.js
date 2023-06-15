@@ -719,6 +719,7 @@ const meta = {
           'audio/mpeg',
           'audio/amr',
           'audio/ogg',
+          'audio/webm',
         ],
         maxKB: 16 * 1024,
       },
