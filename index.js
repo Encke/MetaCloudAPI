@@ -570,13 +570,7 @@ const meta = {
                     })
                   }
                 }
-                console.log(
-                  JSON.stringify(
-                    req.entry[i].changes[n].value.messages[m],
-                    null,
-                    2
-                  )
-                )
+                /*console.log( JSON.stringify( req.entry[i].changes[n].value.messages[m], null, 2 ) )*/
               }
             }
           }
