@@ -788,7 +788,7 @@ const meta = {
         mime,
         data,
         expires: new Date().getTime() + FILE_EXPIRY_DELAY,
-        link: meta.downloadToDirectory + code,
+        link: meta.downloadFromURL + code,
       }
       return JSON.parse(JSON.stringify(meta.files[code]))
     },
@@ -813,7 +813,7 @@ const meta = {
           )
           localFileName =
             new Date().getTime() + '.' + (await mime(fileBuffer)).ext
-          fs.writeFileSync(meta.downloadFromURL + localFileName, fileBuffer)
+          fs.writeFileSync(meta.downloadToDirectory + localFileName, fileBuffer)
         }
       } catch (e) {
         console.log(e)
