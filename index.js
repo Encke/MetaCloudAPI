@@ -443,6 +443,7 @@ const meta = {
                 }
               }
             }
+            let profileName = null
             if (
               req.entry[i].changes[n].value &&
               req.entry[i].changes[n].value.contacts
@@ -452,6 +453,11 @@ const meta = {
                 m < req.entry[i].changes[n].value.contacts.length;
                 m++
               ) {
+                profileName =
+                  req.entry[i].changes[n].value.contacts[m].profile &&
+                  req.entry[i].changes[n].value.contacts[m].profile.name
+                    ? req.entry[i].changes[n].value.contacts[m].profile.name
+                    : null
                 console.log(req.entry[i].changes[n].value.contacts[m])
               }
             }
@@ -479,6 +485,7 @@ const meta = {
                   req.entry[i].changes[n].value.messages[m].text.body
                 ) {
                   processMessage({
+                    profileName,
                     messageId,
                     from,
                     timestamp,
@@ -495,6 +502,7 @@ const meta = {
                     .button_reply.title
                 ) {
                   processMessage({
+                    profileName,
                     messageId,
                     from,
                     timestamp,
@@ -512,6 +520,7 @@ const meta = {
                   req.entry[i].changes[n].value.messages[m].button.payload
                 ) {
                   processMessage({
+                    profileName,
                     messageId,
                     from,
                     timestamp,
@@ -532,6 +541,7 @@ const meta = {
                       req.entry[i].changes[n].value.messages[m].type
                     ]
                   processMessage({
+                    profileName,
                     messageId,
                     text: file.caption ? file.caption : '',
                     from,
