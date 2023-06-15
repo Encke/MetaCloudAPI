@@ -457,9 +457,7 @@ const meta = {
             }
             if (
               req.entry[i].changes[n].value &&
-              req.entry[i].changes[n].value.messages &&
-              req.entry[i].changes[n].value.metadata.phone_number_id ==
-                meta.phoneNumberId
+              req.entry[i].changes[n].value.messages
             ) {
               for (
                 let m = 0;
