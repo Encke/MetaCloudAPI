@@ -64,7 +64,7 @@ const meta = {
     try {
       //console.log(userId)
       //console.log(data)
-      console.log(meta.prepare(type, to, data, replyTo))
+      //console.log(meta.prepare(type, to, data, replyTo))
       const result = (
         await axios.post(
           'https://graph.facebook.com/' +
@@ -780,7 +780,7 @@ const meta = {
           )
         ).data
         const mediaId = result && result.id ? result.id : null
-        console.log('upload to meta file save', type, fileSize + 'KB', mediaId)
+        //console.log('upload to meta file save', type, fileSize + 'KB', mediaId)
         return { id: mediaId }
       }
       meta.files[code] = {
