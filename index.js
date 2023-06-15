@@ -600,7 +600,6 @@ const meta = {
         }
       fileBuffer = fileBuffer ? fileBuffer : fs.readFileSync(fileLocation)
       const fileCode = randomString(10)
-      console.log('fileCode', fileCode)
       return meta.fileManager.add(
         saveAsFrequent,
         fileCode,
@@ -777,7 +776,6 @@ const meta = {
         expires: new Date().getTime() + FILE_EXPIRY_DELAY,
         link: meta.downloadToDirectory + code,
       }
-      console.log(meta.files[code])
       return JSON.parse(JSON.stringify(meta.files[code]))
     },
     download: async (id) => {
