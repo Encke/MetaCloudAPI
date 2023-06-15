@@ -615,8 +615,6 @@ const meta = {
         replyTo
       ),
     addFile: async (fileLocation, fileBuffer, saveAsFrequent) => {
-      if (fileLocation && STATIC_FILES[fileLocation.split('/').pop()])
-        return STATIC_FILES[fileLocation.split('/').pop()]
       if (fileLocation && fileLocation.indexOf('http') == 0)
         return {
           type: ['mp4', 'mov'].includes(
