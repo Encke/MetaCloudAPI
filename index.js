@@ -64,7 +64,7 @@ const meta = {
     try {
       //console.log(userId)
       //console.log(data)
-      //console.log(meta.prepare(type, to, data, replyTo))
+      console.log(meta.prepare(type, to, data, replyTo))
       const result = (
         await axios.post(
           'https://graph.facebook.com/' +
