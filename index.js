@@ -614,7 +614,7 @@ const meta = {
         { messageId, emoji },
         replyTo
       ),
-    addFile: async (fileLocation, fileBuffer, saveAsFrequent) => {
+    addFile: async (fileLocation, fileBuffer, fileMime, saveAsFrequent) => {
       if (fileLocation && fileLocation.indexOf('http') == 0)
         return {
           type: ['mp4', 'mov'].includes(
@@ -630,7 +630,7 @@ const meta = {
       return meta.fileManager.add(
         saveAsFrequent,
         fileCode,
-        (await mime(fileBuffer)).mime,
+        fileMime ? fileMime : (await mime(fileBuffer)).mime,
         fileBuffer
       )
     },
@@ -646,6 +646,7 @@ const meta = {
       const linkData = await meta.send.addFile(
         fileLocation,
         fileBuffer,
+        null,
         saveAsFrequent
       )
       return meta.sendData(
