@@ -638,6 +638,7 @@ const meta = {
       user,
       fileLocation,
       fileBuffer,
+      fileMime,
       saveAsFrequent,
       name,
       caption,
@@ -646,7 +647,7 @@ const meta = {
       const linkData = await meta.send.addFile(
         fileLocation,
         fileBuffer,
-        null,
+        fileMime,
         saveAsFrequent
       )
       return meta.sendData(
