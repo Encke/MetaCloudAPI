@@ -540,21 +540,35 @@ const meta = {
                     req.entry[i].changes[n].value.messages[m][
                       req.entry[i].changes[n].value.messages[m].type
                     ]
-                  processMessage({
-                    profileName,
-                    messageId,
-                    text: file.caption ? file.caption : '',
-                    from,
-                    timestamp,
-                    replyData,
-                    fileType: req.entry[i].changes[n].value.messages[m].type,
-                    mime: file.mime_type
-                      ? file.mime_type.split(';').shift()
-                      : null,
-                    isVoice: !!file.voice,
-                    fileName: await meta.fileManager.download(file.id),
-                    route: 'meta',
-                  })
+                  if (['list_reply'].includes(file.type)) {
+                    processMessage({
+                      profileName,
+                      messageId,
+                      text: file.list_reply
+                        ? file.list_reply.id + '\n' + file.list_reply.title
+                        : '',
+                      from,
+                      timestamp,
+                      replyData,
+                      route: 'meta',
+                    })
+                  } else {
+                    processMessage({
+                      profileName,
+                      messageId,
+                      text: file.caption ? file.caption : '',
+                      from,
+                      timestamp,
+                      replyData,
+                      fileType: req.entry[i].changes[n].value.messages[m].type,
+                      mime: file.mime_type
+                        ? file.mime_type.split(';').shift()
+                        : null,
+                      isVoice: !!file.voice,
+                      fileName: await meta.fileManager.download(file.id),
+                      route: 'meta',
+                    })
+                  }
                 }
                 console.log(
                   JSON.stringify(
