@@ -458,7 +458,7 @@ const meta = {
                   req.entry[i].changes[n].value.contacts[m].profile.name
                     ? req.entry[i].changes[n].value.contacts[m].profile.name
                     : null
-                console.log(req.entry[i].changes[n].value.contacts[m])
+                //console.log(req.entry[i].changes[n].value.contacts[m])
               }
             }
             if (
