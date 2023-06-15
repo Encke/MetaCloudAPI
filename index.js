@@ -556,7 +556,13 @@ const meta = {
                     route: 'meta',
                   })
                 }
-                //console.log(req.entry[i].changes[n].value.messages[m])
+                console.log(
+                  JSON.stringify(
+                    req.entry[i].changes[n].value.messages[m],
+                    null,
+                    2
+                  )
+                )
               }
             }
           }
