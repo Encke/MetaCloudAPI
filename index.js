@@ -1,8 +1,7 @@
-require('dotenv').config()
-
 const axios = require('axios')
-const mime = require('mime-kind')
+const FormData = require('form-data')
 const fs = require('fs')
+const mime = require('mime-kind')
 
 const FILE_EXPIRY_DELAY = 1000 * 60 * 60 * 24 * 2 // 2 days
 
@@ -763,40 +762,25 @@ const meta = {
       const fileSize = parseInt(Buffer.byteLength(data) / 1024)
       const type = meta.fileManager.getType(mime, fileSize)
       if (save) {
-        /*try {
-          const FormData = require('form-data')
-          const formData = new FormData()
-          const headers = formData.getHeaders()
-          formData.append('messaging_product', messaging_product)
-          formData.append('type', mime)
-          formData.append('file', data)
-          headers.Authorization = 'Bearer ' + meta.key
-          const result = (
-            await axios.post(
-              'https://graph.facebook.com/' +
-                messaging_version +
-                '/' +
-                meta.phoneNumberId +
-                '/media?access_token=' +
-                meta.key,
-              formData,
-              {
-                headers: {
-                  Authorization: 'Bearer ' + meta.key,
-                },
-              }
-            )
-          ).data
-          console.log(result)
-        } catch (e) {
-          console.log(e)
-          const error =
-            e && e.response && e.response.data && e.response.data.error
-              ? e.response.data.error
-              : e
-          console.log(error)
-        }*/
-        console.log('upload to meta file save', type, fileSize + 'KB')
+        const formData = new FormData()
+        formData.append('messaging_product', messaging_product)
+        formData.append('file', data)
+        const options = { headers: formData.getHeaders() }
+        options.headers.Authorization = 'Bearer ' + meta.key
+        const result = (
+          await axios.post(
+            'https://graph.facebook.com/' +
+              messaging_version +
+              '/' +
+              meta.phoneNumberId +
+              '/media',
+            formData,
+            options
+          )
+        ).data
+        const mediaId = result && result.id ? result.id : null
+        console.log('upload to meta file save', type, fileSize + 'KB', mediaId)
+        return { id: mediaId }
       }
       meta.files[code] = {
         code,
@@ -836,6 +820,22 @@ const meta = {
       }
       return localFileName
     },
+  },
+  qrCodes: {
+    create: async (text) =>
+      (
+        await axios.post(
+          'https://graph.facebook.com/' +
+            messaging_version +
+            '/' +
+            meta.phoneNumberId +
+            '/message_qrdls?access_token=' +
+            meta.key +
+            '&prefilled_message=' +
+            text +
+            '&generate_qr_image=png'
+        )
+      ).data,
   },
 }
 
