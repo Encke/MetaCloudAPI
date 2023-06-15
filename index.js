@@ -548,7 +548,9 @@ const meta = {
                     timestamp,
                     replyData,
                     fileType: req.entry[i].changes[n].value.messages[m].type,
-                    mime: file.mime_type.split(';').shift(),
+                    mime: file.mime_type
+                      ? file.mime_type.split(';').shift()
+                      : null,
                     isVoice: !!file.voice,
                     fileName: await meta.fileManager.download(file.id),
                     route: 'meta',
