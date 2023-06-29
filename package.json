@@ -1,6 +1,6 @@
 {
   "name": "metacloudapi",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "MetaCloud API - What's App Messaging System",
   "main": "index.js",
   "scripts": {

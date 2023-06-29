@@ -329,7 +329,7 @@ const meta = {
           const rows = []
           for (let row of section.rows) {
             rows.push({
-              id: row.name.split(' ').join('_').toUpperCase(),
+              id: row.id ? row.id : row.name.split(' ').join('_').toUpperCase(),
               title: row.name,
               description: row.description,
             })
